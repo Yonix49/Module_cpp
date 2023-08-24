@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:40:05 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/23 19:48:32 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/08/24 15:27:28 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ class Weapon
 	public:
 	Weapon(const std::string& type);
 	~Weapon();
-		const std::string& getType() const;
+	const std::string& getType() const;
 
-		void setType(const std::string &type);
+	void setType(const std::string &type);
 
 	private:
 	std::string type;

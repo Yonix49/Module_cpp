@@ -1,28 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/23 17:07:41 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/24 16:15:55 by mhajji-b         ###   ########.fr       */
+/*   Created: 2023/08/24 19:21:58 by mhajji-b          #+#    #+#             */
+/*   Updated: 2023/08/24 19:47:44 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
-#include "Weapon.hpp"
-using namespace std;
+#include "Harl.hpp"
 
-HumanB::HumanB(const std::string& name) : name(name)
+int main ()
 {
-
-}
-void HumanB::setWeapon(Weapon &weapon)
-{
-	this->weapon = &weapon;
-}
-void HumanB::attack()
-{
-	std::cout << name << " attacks with their " << weapon->getType() <<std::endl;
+	
 }

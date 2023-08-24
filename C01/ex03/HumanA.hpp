@@ -13,7 +13,6 @@ class HumanA
 public:
     HumanA(const std::string& name, Weapon& weapon);
     void attack();
-	// tjr passer par la reference c'est beaucoup mieux
     
 private:
     std::string name;
