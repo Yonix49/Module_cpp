@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:23:34 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/24 19:06:38 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/08/25 18:06:56 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void replace(std::string s1, std::string s2, std::string file_name)
 	std::ofstream outfile(file_name + ".replace");
 	if (!outfile)
 	{
-		std::cerr << "Error infile: " << file_name << std::endl;
+		std::cerr << "Error outfile: " << file_name << std::endl;
 		exit(3);
 	}
 	std::string line;
