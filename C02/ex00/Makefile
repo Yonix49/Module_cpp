@@ -9,7 +9,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 # CFLAGS += -fsanitize=address
 INCLUDE = -I. 
 
-NAME = main
+NAME = fixed
 
 all: $(NAME)
 
