@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 20:54:23 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/07 15:33:47 by mhajji-b         ###   ########.fr       */
+/*   Created: 2023/09/06 15:48:26 by mhajji-b          #+#    #+#             */
+/*   Updated: 2023/09/06 17:04:32 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
 
+#ifndef DEF_CAT
+#define DEF_CAT
 
-
-int main ()
+#include "animals.hpp"
+#include <cstring>
+#include <iostream>
+#include <string>
+class Cat : public Animal
 {
-	// std::string name = "Louis";
-	// Zombie flo(name);
-	// flo.randomChump(name);
-	Zombie instance;
-    Zombie *horde = instance.zombieHorde(8, "bloublou");
-	for (int i = 0; i < 8; ++i)
-	{
-		horde[i].announce();
-	}
-	delete[] horde;
-	return (0);
-}
-// A re-test pour l'affichage // 
+	public:
+	Cat();
+	~Cat();
+	Cat &operator=(const Cat &other);
+	Cat(const Cat &src);
+	Cat(const std::string type);
+	void makeSound() const override;
+	std::string getType() const override;
+
+};
+
+
+
+#endif

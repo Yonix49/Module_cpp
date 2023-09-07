@@ -6,13 +6,13 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 17:07:41 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/24 16:15:55 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:34:41 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "HumanB.hpp"
 #include "Weapon.hpp"
-using namespace std;
+
 
 HumanB::HumanB(const std::string& name) : name(name)
 {

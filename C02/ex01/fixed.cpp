@@ -6,13 +6,12 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/25 18:26:36 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/26 21:48:04 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:34:36 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fixed.hpp"
 
-using namespace std;
 const int Fixed::nb_bits = 8;
 
 Fixed::Fixed()

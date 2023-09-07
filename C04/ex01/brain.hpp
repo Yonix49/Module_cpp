@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 20:54:23 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/07 15:33:47 by mhajji-b         ###   ########.fr       */
+/*   Created: 2023/09/07 16:58:18 by mhajji-b          #+#    #+#             */
+/*   Updated: 2023/09/07 16:59:51 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
-
-
-
-int main ()
+#ifndef DEF_BRAIN
+#define DEF_BRAIN
+class brain
 {
-	// std::string name = "Louis";
-	// Zombie flo(name);
-	// flo.randomChump(name);
-	Zombie instance;
-    Zombie *horde = instance.zombieHorde(8, "bloublou");
-	for (int i = 0; i < 8; ++i)
-	{
-		horde[i].announce();
-	}
-	delete[] horde;
-	return (0);
-}
-// A re-test pour l'affichage // 
+	public:
+		brain(/* args */);
+		~brain();
+	
+	private:
+};
+
+#endif

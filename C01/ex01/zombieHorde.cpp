@@ -6,13 +6,13 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/23 14:55:44 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/23 16:17:18 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/07 15:33:51 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-using namespace  std;
+
 
 std::string Zombie::set_name(std::string name)
 {

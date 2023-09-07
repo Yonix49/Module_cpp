@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/22 20:54:23 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/07 15:33:47 by mhajji-b         ###   ########.fr       */
+/*   Created: 2023/09/06 15:30:14 by mhajji-b          #+#    #+#             */
+/*   Updated: 2023/09/06 17:07:41 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef DEF_DOG
+#define DEF_DOG
 
-
-
-int main ()
+#include "animals.hpp"
+#include <cstring>
+#include <iostream>
+#include <string>
+class Dog : public Animal 
 {
-	// std::string name = "Louis";
-	// Zombie flo(name);
-	// flo.randomChump(name);
-	Zombie instance;
-    Zombie *horde = instance.zombieHorde(8, "bloublou");
-	for (int i = 0; i < 8; ++i)
-	{
-		horde[i].announce();
-	}
-	delete[] horde;
-	return (0);
-}
-// A re-test pour l'affichage // 
+	public:
+	Dog();
+	~Dog();
+	Dog(const std::string type);
+	Dog &operator=(const Dog &other);
+	void makeSound() const override;
+	Dog(const Dog &src);
+	std::string getType() const override;
+};
+
+
+
+#endif
