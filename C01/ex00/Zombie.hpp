@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:54:50 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/23 14:31:55 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:20:33 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,17 @@
 #include <cstring>
 class Zombie
 {
-public:
-	Zombie();
-	Zombie(std::string name);
-	~Zombie();
+	public:
+		Zombie();
+		Zombie(std::string name);
+		~Zombie();
 
-	void announce(void);
-	Zombie *newZombie(std::string name);
-	void randomChump(std::string name);
+		void announce(void);
+		Zombie *newZombie(std::string name);
+		void randomChump(std::string name);
 
-private:
-	std::string name;
+	private:
+		std::string name;
 };
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/24 16:23:34 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/25 18:06:56 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/07 17:18:22 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,22 +31,22 @@ void replace(std::string s1, std::string s2, std::string file_name)
 		exit(3);
 	}
 	std::string line;
-while (std::getline(infile, line))
-{
-    size_t pos = 0;
-    std::string newLine;
-    while ((pos = line.find(s1, pos)) != std::string::npos)
-    {
-        newLine += line.substr(0, pos);
-        newLine += s2;
-        pos += s1.length();
-    }
-    if (pos != std::string::npos)// Ici j'ajoute le reste si aucune occurente n'a ete find 
-    {
-        newLine += line.substr(pos); // Ajoute le reste de la ligne après la dernière occurrence
-    }
-    outfile << newLine << std::endl;
-}
+	while (std::getline(infile, line))
+	{
+    	size_t pos = 0;
+    	std::string newLine;
+    	while ((pos = line.find(s1, pos)) != std::string::npos)
+    	{
+        	newLine += line.substr(0, pos);
+        	newLine += s2;
+        	pos += s1.length();
+    	}
+    	if (pos != std::string::npos)// Ici j'ajoute le reste si aucune occurente n'a ete find 
+    	{
+        	newLine += line.substr(pos); // Ajoute le reste de la ligne après la dernière occurrence
+    	}
+    	outfile << newLine << std::endl;
+	}
 }
 
 int main (int argc, char **argv)

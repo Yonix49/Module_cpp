@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:54:41 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/23 14:45:48 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/07 19:21:19 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,6 @@ void Zombie::randomChump(std::string name)
 {
 	Zombie* zombie = newZombie(name);
 	zombie->announce();
-	// delete zombie
+	delete zombie;
 	// announce();
 }
