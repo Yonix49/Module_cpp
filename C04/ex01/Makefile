@@ -16,6 +16,8 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) -o $(NAME) $(OBJS)
 
+%.o: %.cpp
+	$(CC) -c -Wall -Wextra -Werror -std=c++98 -o $@ $<
 # -include $(DEPS)
 
 clean:

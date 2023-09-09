@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:54:50 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/23 16:17:09 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/09 19:41:10 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ public:
 	Zombie *newZombie(std::string name);
 	void randomChump(std::string name);
 	Zombie Horde_name(std::string name);
-	Zombie* zombieHorde(int N, std::string name);
-	std::string set_name(std::string name);
+	void set_name(std::string name);
 
 
 private:
 	std::string name;
 };
+	Zombie* zombieHorde(int N, std::string name);
 
 #endif

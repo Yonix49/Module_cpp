@@ -2,7 +2,7 @@ SRCS =  main.cpp fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
 # DEPS = $(SRCS:.cpp=.d)
 
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 
 # CFLAGS += MMD
 # CFLAGS += -g3
@@ -16,6 +16,9 @@ all: $(NAME)
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) -o $(NAME) $(OBJS)
 
+%.o: %.cpp
+	$(CC) -c -Wall -Wextra -Werror -std=c++98 -o $@ $<
+	
 # -include $(DEPS)
 
 clean:

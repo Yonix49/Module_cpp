@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:30:40 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/07 15:34:28 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/09 18:35:17 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ Dog& Dog::operator=(const Dog &other)
 	}
 	return *this;
 }
-Dog::Dog(const Dog &src)
+Dog::Dog(const Dog &src) : Animal(src)
 {
-	this->type = src.type;
-    std::cout << "Copy Constructor called for a Dog" << std::endl;
+    std::cout << "Dog Copy constructor called" << std::endl;
 }
+
 Dog::Dog(const std::string type)
 {
 	this->type = type;

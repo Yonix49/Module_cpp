@@ -2,7 +2,7 @@ SRCS =  main.cpp Harl.cpp
 OBJS = $(SRCS:.cpp=.o)
 # DEPS = $(SRCS:.cpp=.d)
 
-CC = g++
+CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98 
 # CFLAGS += MMD
 # CFLAGS += -g3
@@ -23,6 +23,9 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
+
+%.o: %.cpp
+	$(CC) -c -Wall -Wextra -Werror -std=c++98 -o $@ $<
 
 re: fclean all
 

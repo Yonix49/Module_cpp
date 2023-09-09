@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/22 20:54:41 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/07 19:21:19 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/09 21:52:42 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,5 @@ void Zombie::announce(void)
 {
 	std::cout << name << ": BraiiiiiiinnnzzzZ..." << std::endl;
 }
-Zombie *Zombie::newZombie(std::string name)
-{
-	return new Zombie(name);
-}
-void Zombie::randomChump(std::string name)
-{
-	Zombie* zombie = newZombie(name);
-	zombie->announce();
-	delete zombie;
-	// announce();
-}
+
+
