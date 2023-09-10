@@ -40,7 +40,7 @@ Animal& Animal::operator=(const Animal &other)
 Animal::Animal(std::string type)
 {
 	this->type = type;
-	std::cout << "Animal" << type << "Constructor called" << std::endl;
+	std::cout << "Animal " << type << " Constructor called" << std::endl;
 }
 
 std::string Animal::getType() const

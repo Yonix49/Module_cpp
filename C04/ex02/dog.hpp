@@ -1,34 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   WrongWrongCat.hpp                                       :+:      :+:    :+:   */
+/*   dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 16:48:54 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/06 16:49:57 by mhajji-b         ###   ########.fr       */
+/*   Created: 2023/09/06 15:30:14 by mhajji-b          #+#    #+#             */
+/*   Updated: 2023/09/10 15:21:26 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEF_WrongCat
-#define DEF_WrongCat
+#ifndef DEF_DOG
+#define DEF_DOG
 
-#include "WrongAnimal.hpp"
+#include "animals.hpp"
+#include "brain.hpp"
 #include <cstring>
 #include <iostream>
 #include <string>
-class WrongCat : public WrongAnimal
+
+class Dog : public AAnimal 
 {
 	public:
-	WrongCat();
-	~WrongCat();
-	WrongCat &operator=(const WrongCat &other);
-	WrongCat(const WrongCat &src);
-	WrongCat(const std::string type);
-	void makeSound() const override;
-	std::string getType() const;
+		Dog();
+		~Dog();
+		Dog(const std::string type);
+		Dog &operator=(const Dog &other);
+		Dog(const Dog &src);
+		
+		void makeSound() const ;
+		void copyIdeas(const Dog &other);
+		std::string getType() const ;
+		Brain* getBrain() const;
 
 
+	private:
+		Brain* brain;
 };
 
 

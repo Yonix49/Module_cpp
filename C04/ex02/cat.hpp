@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   brain.hpp                                          :+:      :+:    :+:   */
+/*   cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 16:58:18 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/10 13:37:43 by mhajji-b         ###   ########.fr       */
+/*   Created: 2023/09/06 15:48:26 by mhajji-b          #+#    #+#             */
+/*   Updated: 2023/09/10 15:19:56 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DEF_BRAIN
-#define DEF_BRAIN
+
+#ifndef DEF_CAT
+#define DEF_CAT
+
+#include "animals.hpp"
 #include <cstring>
 #include <iostream>
 #include <string>
-class Brain
+#include "brain.hpp"
+class Cat : public AAnimal
 {
 	public:
-		Brain();
-		~Brain();
-		Brain &operator=(const Brain &other);
-		Brain(const Brain &src);
-  		void copyIdeas(const Brain &other);
-		std::string getIdea(int idx) const;
+	Cat();
+	~Cat();
+	Cat &operator=(const Cat &other);
+	Cat(const Cat &src);
+	Cat(const std::string type);
+	void makeSound() const ;
+	std::string getType() const ;
+	void copyIdeas(const Cat &other);
+	Brain* getBrain() const;
 
-		void setIdea(int idx, std::string str);
 	private:
-		std::string ideas[100];
+		Brain* brain;
 };
+
+
 
 #endif

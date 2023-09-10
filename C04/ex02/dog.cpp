@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:30:40 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/10 14:18:04 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/10 15:22:51 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ Dog &Dog::operator=(const Dog &other)
 	return *this;
 }
 
-Dog::Dog(const Dog &src) : Animal(src) 
+Dog::Dog(const Dog &src) : AAnimal(src) 
 {
     this->brain = new Brain();
 	this->brain->copyIdeas(*src.brain);

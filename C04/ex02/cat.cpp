@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:18:42 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/10 14:17:58 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/10 15:19:34 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,11 @@ Cat& Cat::operator=(const Cat &other)
 	}
 	return *this;
 }
-Cat::Cat(const Cat &src) : Animal(src)
+Cat::Cat(const Cat &src) : AAnimal(src)
 {
     std::cout << "Cat Copy constructor called" << std::endl;
 }
-Cat::Cat(const std::string type) : Animal(type)
+Cat::Cat(const std::string type) : AAnimal(type)
 {
 	this->type = type;
 	std::cout << "Cat " << type << " Constructor called" << std::endl;

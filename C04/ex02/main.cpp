@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:32:56 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/10 14:58:30 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/10 15:35:36 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,39 +14,42 @@
 #include "dog.hpp"
 #include "cat.hpp"
 #include "brain.hpp"
+#include <iostream>
 
-#include <vector>
 int main()
 {
     // Test 1: Créez et supprimez un chien
-    const Animal* j = new Dog();
+    const AAnimal* j = new Dog();
+    // AAnimal blabla;
     delete j; // Ne doit pas créer de fuite de mémoire
 
     // Test 2: Créez et supprimez un chat
-    const Animal* i = new Cat();
+    const AAnimal* i = new Cat();
     delete i; // Ne doit pas créer de fuite de mémoire
 
     // Test 3: Créez un tableau d'animaux (chien et chat) et supprimez-les
-    const int numAnimals = 4;
-    Animal* animals[numAnimals];
+    const int numAAnimals = 4;
+    AAnimal* AAnimals[numAAnimals];
 
-    for (int k = 0; k < numAnimals; ++k)
+    for (int k = 0; k < numAAnimals; ++k)
     {
-        if (k < numAnimals / 2)
+        if (k < numAAnimals / 2)
         {
-            animals[k] = new Dog();
+            AAnimals[k] = new Dog();
         }
         else
         {
-            animals[k] = new Cat();
+            AAnimals[k] = new Cat();
         }
     }
 
-    for (int k = 0; k < numAnimals; ++k)
+    for (int k = 0; k < numAAnimals; ++k)
     {
-        delete animals[k]; // Ne doit pas créer de fuite de mémoire
+        delete AAnimals[k]; // Ne doit pas créer de fuite de mémoire
     }
 
     return 0;
 }
+
+
 

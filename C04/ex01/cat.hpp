@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 15:48:26 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/09/06 17:04:32 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/10 13:35:30 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 #include <cstring>
 #include <iostream>
 #include <string>
+#include "brain.hpp"
 class Cat : public Animal
 {
 	public:
@@ -26,9 +27,13 @@ class Cat : public Animal
 	Cat &operator=(const Cat &other);
 	Cat(const Cat &src);
 	Cat(const std::string type);
-	void makeSound() const override;
-	std::string getType() const override;
+	void makeSound() const ;
+	std::string getType() const ;
+	void copyIdeas(const Cat &other);
+	Brain* getBrain() const;
 
+	private:
+		Brain* brain;
 };
 
 
