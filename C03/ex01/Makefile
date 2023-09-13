@@ -9,7 +9,7 @@ CFLAGS = -Wall -Wextra -Werror -std=c++98
 # CFLAGS += -fsanitize=address
 INCLUDE = -I. 
 
-NAME = ClapTrap
+NAME = ScavTrap
 
 all: $(NAME)
 
@@ -17,6 +17,8 @@ $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(INCLUDE) -o $(NAME) $(OBJS)
 
 # -include $(DEPS)
+%.o: %.cpp
+	$(CC) -c -Wall -Wextra -Werror -std=c++98 -o $@ $<
 
 clean:
 	rm -f $(OBJS) 

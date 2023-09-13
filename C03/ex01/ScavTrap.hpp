@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:03:34 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/27 19:35:36 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:39:20 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ public:
 	ScavTrap& operator=(const ScavTrap &other);
 	ScavTrap(const ScavTrap &src);
 	ScavTrap(const std::string name);
+	void attack(const std::string& target);
 	void guardGate();
 };
 

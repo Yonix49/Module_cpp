@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:52:38 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/27 19:34:54 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/13 19:50:34 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,25 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 
-int main()
+int	main()
 {
-    ClapTrap clapTrap("ClapTrap");
-    clapTrap.attack("target_2");
-    clapTrap.takeDamage(15);
-    clapTrap.beRepaired(10);
+	ScavTrap david("David");
+	ClapTrap goliath("Goliath");
+	
+	std::cout << "Name: " << david.getName() << std::endl;
+	std::cout << "Hit points: " << david.getHitPoints() << std::endl;
+	std::cout << "Energy points: " << david.getEnergyPoints() << std::endl;
+	std::cout << "Attack damage: " << david.getAttackDamage() << std::endl;
+	david.attack("Goliath");
+	goliath.takeDamage(david.getAttackDamage());
+	std::cout << "Hit points: " << goliath.getHitPoints() << std::endl;
+	david.guardGate();
+	goliath.beRepaired(20);
+	std::cout << "Name: " << goliath.getName() << std::endl;
+	std::cout << "Hit points: " << goliath.getHitPoints() << std::endl;
+	std::cout << "Energy points: " << goliath.getEnergyPoints() << std::endl;
+	std::cout << "Attack damage: " << goliath.getAttackDamage() << std::endl;
 
-    ScavTrap scavTrap("ScavTrap");
-    scavTrap.attack("target_1");
-    scavTrap.takeDamage(25);
-    scavTrap.beRepaired(20);
-    scavTrap.guardGate();
-
-    return 0;
+	return 0;
 }
 

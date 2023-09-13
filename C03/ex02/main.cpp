@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 17:52:38 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/28 15:56:00 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:59:34 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 #include "ClapTrap.hpp"
 #include "ScavTrap.hpp"
 #include "FragTrap.hpp"
-int main()
+int	main()
 {
-    ClapTrap clapTrap("Clap");
-    ClapTrap anotherClapTrap("Another Clap");
+	ScavTrap david("David");
+	FragTrap goliath("Goliath");
+	FragTrap lol(goliath);
+	
+	std::cout << "Name: " << lol.getName() << std::endl;
+	std::cout << "Hit points: " << lol.getHitPoints() << std::endl;
+	std::cout << "Energy points: " << lol.getEnergyPoints() << std::endl;
+	std::cout << "Attack damage: " << lol.getAttackDamage() << std::endl;
+	david.attack("Goliath");
+	goliath.attack("David");
+	goliath.highFivesGuys();
 
-    clapTrap.attack("target_1");
-    clapTrap.takeDamage(15);
-    clapTrap.beRepaired(10);
-
-    ScavTrap scavTrap("Scav");
-    scavTrap.attack("target_2");
-    scavTrap.takeDamage(25);
-    scavTrap.beRepaired(20);
-    scavTrap.guardGate();
-
-    FragTrap fragTrap("Frag");
-    fragTrap.attack("target_3");
-    fragTrap.takeDamage(30);
-    fragTrap.beRepaired(25);
-    fragTrap.highFivesGuys();
-
-    return 0;
+	std::cout << "Name: " << goliath.getName() << std::endl;
+	std::cout << "Hit points: " << goliath.getHitPoints() << std::endl;
+	std::cout << "Energy points: " << goliath.getEnergyPoints() << std::endl;
+	std::cout << "Attack damage: " << goliath.getAttackDamage() << std::endl;
+	return 0;
 }
 
 

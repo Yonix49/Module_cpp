@@ -6,19 +6,20 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 18:23:17 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/27 19:32:50 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/13 21:45:08 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 ScavTrap::ScavTrap(const std::string name) : ClapTrap(name)
 {
-	std::cout << "ScavTrap Constructor called" << std::endl;
+	std::cout << "ScavTrap " << name << " Constructor called" << std::endl;
 }
 
 ScavTrap::ScavTrap(const ScavTrap &src) : ClapTrap(src)
 {
     std::cout << "ScavTrap Copy constructor called" << std::endl;
+	*this = src;
 }
 ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 {
@@ -31,16 +32,30 @@ ScavTrap& ScavTrap::operator=(const ScavTrap &other)
 	}
 	return *this;
 }
-
+void ScavTrap::attack(const std::string& target)
+{
+	if (this->energy_points == 0 || this->hit_points == 0)
+	{
+		std::cout << "ScavTrap " << name << " has no energy!" << std::endl;
+		return;
+	}
+	if (energy_points > 0)
+	{
+		energy_points--;
+		std::cout << "ScavTrap " << name << " attacks " << target << ", causing " << attack_damage << " points of damage!" << std::endl;
+	}
+	else
+		std::cout << "ScavTrap " << name << " runs out of energy!" << std::endl;
+}
 ScavTrap::ScavTrap()
 {
-	std::cout << "Basic ScavTrap constructor called" << std::endl;
+	std::cout << "Basic ScavTrap" << name <<  " constructor called" << std::endl;
 }
 ScavTrap::~ScavTrap()
 {
-	std::cout << "ScavTrap Destructor called" << std::endl;
+	std::cout << "ScavTrap " << name << " destructor called" << std::endl;
 }
 void ScavTrap::guardGate()
 {
-	std::cout << "ScavTrap est entre en mode gate keeper" <<std::endl;  
+	std::cout << "ScavTrap is on gate keeper mode !" <<std::endl;  
 }

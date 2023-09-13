@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/27 16:03:34 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/08/27 19:35:58 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/09/13 18:23:10 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,18 @@ class ClapTrap
 	~ClapTrap();
 	ClapTrap& operator=(const ClapTrap &other);
 	ClapTrap(const ClapTrap &other);
-	
+	//Frome canonique
 	ClapTrap(const std::string name);
 	
 	void attack(const std::string& target);
 	void takeDamage(unsigned int amount);
 	void beRepaired(unsigned int amount);
 	
+	std::string getName() const;
+	unsigned int getEnergyPoints() const;
+	unsigned int getHitPoints() const;
+	unsigned int getAttackDamage() const;
+
 	private:
 	std::string name; 
 	unsigned hit_points;
