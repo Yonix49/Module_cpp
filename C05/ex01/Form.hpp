@@ -1,9 +1,19 @@
 #ifndef FORM_HPP
 #define FORM_HPP
 
+#include "Bureaucrat.hpp" 
+
+#include <iostream>
+#include <string>
+#include <cstring>
+#include <fstream>
+#include <cstdlib>
+#include <string>  
+class Bureaucrat ;
+
 class Form {
 public:
-    Form(const std::string& name, int gradeSign, int gradeExecute, bool sign);
+    Form(const std::string& name, int gradeSign, int gradeExecute);
     ~Form();
     Form& operator= (const Form &src);
     
@@ -11,9 +21,9 @@ public:
     int getGradeSign() const;
     int getGradeExecute() const;
     bool isSigned() const;
+    bool get_Grade_bool_sign() const;
 
-    void GradeIncrement();
-    void GradeDecrement();
+
     void signForm();
     void beSigned(const Bureaucrat& bureaucrat);
 

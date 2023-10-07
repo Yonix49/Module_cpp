@@ -18,43 +18,46 @@
 #include <cstring>
 #include <fstream>
 #include <cstdlib>
+#include <string>  // Incluez les en-têtes nécessaires
+#include "AForm.hpp"
+class AForm ;
 
 class Bureaucrat
 {
-public:
-    Bureaucrat(const std::string &name, int grade);
+    public:
+    Bureaucrat(const std::string&  name, int grade);
     ~Bureaucrat();
     // Bureaucrat();
-    Bureaucrat &operator=(const Bureaucrat &src);
+    Bureaucrat& operator= (const Bureaucrat &src);
+    void executeForm(const AForm &form) const;
 
-    const std::string &getName() const;
+    const std::string& getName() const;
     int getGrade() const;
     void GradeIncrement(void);
     void GradeDecrement(void);
+    void signForm(AForm& form);
 
-    class GradeTooHighException : public std::exception
-    {
+      class GradeTooHighException : public std::exception {
     public:
-        virtual const char *what() const throw()
-        {
+        virtual const char* what() const throw() {
             return "Grade is too high";
         }
     };
 
-    class GradeTooLowException : public std::exception
-    {
+    class GradeTooLowException : public std::exception {
     public:
-        virtual const char *what() const throw()
-        { // Marche comme un Perror en C
+        virtual const char* what() const throw() {
             return "Grade is too low";
         }
     };
-
-private:
-    const std::string &name;
+    
+    private:
+    const std::string& name;
     int grade;
 };
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
-std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat);
 
-#endif
+
+
+#endif 

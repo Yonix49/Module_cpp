@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Form.cpp                                           :+:      :+:    :+:   */
+/*   AForm.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,12 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
-Form::~Form()
-{
-}
+#include "AForm.hpp"
+#include "AForm.hpp"
 
-Form::Form(const std::string &name, int gradeSign, int gradeExecute)
+AForm::AForm(const std::string& name, int gradeSign, int gradeExecute)
     : name(name), sign(false), gradeSign(gradeSign), gradeExecute(gradeExecute)
 {
     if (gradeSign < 1)
@@ -28,43 +26,71 @@ Form::Form(const std::string &name, int gradeSign, int gradeExecute)
     }
 }
 
-void Form::beSigned(const Bureaucrat &bureaucrat)
+AForm::~AForm()
 {
-    if (bureaucrat.getGrade() <= this->gradeSign)
+}
+ void AForm::signAForm() 
+ {
+
+}
+
+void AForm::beSigned(const Bureaucrat &bureaucrat)
+{
+    if (bureaucrat.getGrade() <= gradeSign)
     {
-        this->sign = true;
+        sign = true;
     }
     else
     {
         throw GradeTooLowException();
     }
 }
+void AForm::executeAction() const {
+}
 
-bool Form::get_Grade_bool_sign() const
+void AForm::execute(Bureaucrat const &executor) const
+{
+    if (!isSigned())
+    {
+        std::cout << executor.getName() << " cannot execute the form. It is not signed." << std::endl;
+        return;
+    }
+
+    if (executor.getGrade() > getGradeExecute())
+    {
+        std::cout << executor.getName() << " cannot execute the form. Bureaucrat's grade is too low." << std::endl;
+        return;
+    }
+
+    executeAction();
+}
+
+bool AForm::get_Grade_bool_sign() const
 {
     return sign;
 }
 
-int Form::getGradeSign() const
+int AForm::getGradeSign() const
 {
     return gradeSign;
 }
 
-int Form::getGradeExecute() const
+int AForm::getGradeExecute() const
 {
     return gradeExecute;
 }
-const std::string &Form::getName() const
+
+const std::string &AForm::getName() const
 {
     return name;
 }
 
-bool Form::isSigned() const
+bool AForm::isSigned() const
 {
     return sign;
 }
 
-Form &Form::operator=(const Form &src)
+AForm &AForm::operator=(const AForm &src)
 {
     if (this != &src)
     {
@@ -73,9 +99,9 @@ Form &Form::operator=(const Form &src)
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, const Form &form)
+std::ostream &operator<<(std::ostream &os, const AForm &form)
 {
-    os << "Form: " << form.getName() << ", Grade to Sign: " << form.getGradeSign()
+    os << "AForm: " << form.getName() << ", Grade to Sign: " << form.getGradeSign()
        << ", Grade to Execute: " << form.getGradeExecute() << ", Signed: " << (form.isSigned() ? "Yes" : "No") << "\n";
     return os;
 }

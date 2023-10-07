@@ -18,7 +18,9 @@
 #include <cstring>
 #include <fstream>
 #include <cstdlib>
+#include <string>  // Incluez les en-têtes nécessaires
 #include "Form.hpp"
+class Form ;
 
 class Bureaucrat
 {

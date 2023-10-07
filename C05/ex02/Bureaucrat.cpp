@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "AForm.hpp"
 
 // Bureaucrat::Bureaucrat()
 // {
@@ -70,6 +70,18 @@ Bureaucrat::~Bureaucrat()
 {
     // std::cout << "Bureaucrat " << name << " called destructor" << std::endl;
 }
+void Bureaucrat::executeForm(const AForm &form) const
+{
+    try
+    {
+        form.execute(*this);
+        std::cout << getName() << " executed " << form.getName() << std::endl;
+    }
+    catch (const std::exception &e)
+    {
+        std::cout << getName() << " could not execute " << form.getName() << " because " << e.what() << std::endl;
+    }
+}
 
 const std::string &Bureaucrat::getName() const
 {
@@ -87,15 +99,15 @@ std::ostream &operator<<(std::ostream &os, const Bureaucrat &bureaucrat)
     return os;
 }
 
-void Bureaucrat::signForm(Form &form)
+void Bureaucrat::signForm(AForm &AForm)
 {
     try
     {
-        form.beSigned(*this);
-        std::cout << name << " signed " << form.getName() << std::endl;
+        AForm.beSigned(*this);
+        std::cout << name << " signed " << AForm.getName() << std::endl;
     }
-    catch (const Form::GradeTooLowException &e)
+    catch (const AForm::GradeTooLowException &e)
     {
-        std::cout << name << " couldn’t sign " << form.getName() << " because " << e.what() << std::endl;
+        std::cout << name << " couldn’t sign " << AForm.getName() << " because " << e.what() << std::endl;
     }
 }
