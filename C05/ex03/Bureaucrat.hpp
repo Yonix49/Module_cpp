@@ -55,7 +55,6 @@ class Bureaucrat
     const std::string& name;
     int grade;
 };
-
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 
