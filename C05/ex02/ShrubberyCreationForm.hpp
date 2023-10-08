@@ -8,10 +8,14 @@ class ShrubberyCreationForm : public AForm
 public:
 	ShrubberyCreationForm(const std::string &target);
 
-	// Modifier la signature pour correspondre à celle de la classe de base
+	 ShrubberyCreationForm(const ShrubberyCreationForm &src); 
+    ShrubberyCreationForm & operator=(const ShrubberyCreationForm &rhs);
+    ~ShrubberyCreationForm();
+	ShrubberyCreationForm();
 	virtual void execute(Bureaucrat const &executor) const;
 	std::string getTarget() const;
-
+	
+	
 	class ShrubberyCreationGradeTooHighException : public std::exception
 	{
 	public:

@@ -9,7 +9,10 @@ public:
 	RobotomyRequestForm(const std::string &target);
 	void beSigned(const Bureaucrat &bureaucrat) const;
 	virtual void execute(Bureaucrat const &executor) const;
-
+	 RobotomyRequestForm(const RobotomyRequestForm &src); 
+    RobotomyRequestForm & operator=(const RobotomyRequestForm &rhs);
+    ~RobotomyRequestForm();
+	RobotomyRequestForm();
 	class RobotomyRequestFormGradeTooHighException : public std::exception
 	{
 	public:

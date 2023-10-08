@@ -27,8 +27,8 @@ class Bureaucrat
     public:
     Bureaucrat(const std::string&  name, int grade);
     ~Bureaucrat();
-    // Bureaucrat();
     Bureaucrat& operator= (const Bureaucrat &src);
+    // Bureaucrat();
     void executeForm(const AForm &form) const;
 
     const std::string& getName() const;
@@ -55,6 +55,7 @@ class Bureaucrat
     const std::string& name;
     int grade;
 };
+
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat);
 
 

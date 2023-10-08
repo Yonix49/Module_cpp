@@ -14,9 +14,11 @@ class Bureaucrat;
 class AForm
 {
 public:
-    AForm(const std::string &name, int gradeSign, int gradeExecute);
+    AForm();
     ~AForm();
+    AForm(const AForm& src);
     AForm &operator=(const AForm &src);
+    AForm(const std::string &name, int gradeSign, int gradeExecute);
 
     const std::string &getName() const;
     int getGradeSign() const;
@@ -24,7 +26,6 @@ public:
     bool isSigned() const;
     bool get_Grade_bool_sign() const;
     // void executeAction();
-    virtual void signAForm();
     virtual void execute(Bureaucrat const &executor) const = 0;
     virtual void executeAction() const ;
 

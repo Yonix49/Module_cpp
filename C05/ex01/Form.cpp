@@ -11,13 +11,20 @@
 /* ************************************************************************** */
 
 #include "Form.hpp"
+// Destructeur
+
 Form::~Form()
 {
 }
+// Constructeur
+Form::Form() : name("default form"), sign(false), gradeSign(150), gradeExecute(150) {
+    
+}
 
-Form::Form(const std::string &name, int gradeSign, int gradeExecute)
+Form::Form(const std::string& name, int gradeSign, int gradeExecute)
     : name(name), sign(false), gradeSign(gradeSign), gradeExecute(gradeExecute)
 {
+    // Vérification de la validité du gradeSign
     if (gradeSign < 1)
     {
         throw GradeTooHighException();
@@ -28,8 +35,10 @@ Form::Form(const std::string &name, int gradeSign, int gradeExecute)
     }
 }
 
-void Form::beSigned(const Bureaucrat &bureaucrat)
+// Fonction pour signer le formulaire
+void Form::beSigned(const Bureaucrat& bureaucrat)
 {
+    // Vérification du grade du bureaucrate
     if (bureaucrat.getGrade() <= this->gradeSign)
     {
         this->sign = true;
@@ -38,6 +47,15 @@ void Form::beSigned(const Bureaucrat &bureaucrat)
     {
         throw GradeTooLowException();
     }
+}
+
+// Constructeur de copie
+Form::Form(const Form& src) :
+    name(src.getName()),
+    sign(src.isSigned()),
+    gradeSign(src.getGradeSign()),
+    gradeExecute(src.getGradeExecute())
+{
 }
 
 bool Form::get_Grade_bool_sign() const
@@ -54,17 +72,21 @@ int Form::getGradeExecute() const
 {
     return gradeExecute;
 }
-const std::string &Form::getName() const
+
+// Guetteur name
+const std::string& Form::getName() const
 {
     return name;
 }
 
+//  Guetteur sign
 bool Form::isSigned() const
 {
     return sign;
 }
 
-Form &Form::operator=(const Form &src)
+// Opérateur d'assignation
+Form& Form::operator=(const Form& src)
 {
     if (this != &src)
     {
@@ -73,7 +95,8 @@ Form &Form::operator=(const Form &src)
     return *this;
 }
 
-std::ostream &operator<<(std::ostream &os, const Form &form)
+// Operateur flux sortie
+std::ostream& operator<<(std::ostream& os, const Form& form)
 {
     os << "Form: " << form.getName() << ", Grade to Sign: " << form.getGradeSign()
        << ", Grade to Execute: " << form.getGradeExecute() << ", Signed: " << (form.isSigned() ? "Yes" : "No") << "\n";

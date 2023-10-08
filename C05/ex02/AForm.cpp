@@ -13,6 +13,15 @@
 #include "AForm.hpp"
 #include "AForm.hpp"
 
+AForm::~AForm()
+{
+}
+
+AForm::AForm() : name("default form"), sign(false), gradeSign(150), gradeExecute(150) {
+    
+}
+
+
 AForm::AForm(const std::string& name, int gradeSign, int gradeExecute)
     : name(name), sign(false), gradeSign(gradeSign), gradeExecute(gradeExecute)
 {
@@ -26,14 +35,13 @@ AForm::AForm(const std::string& name, int gradeSign, int gradeExecute)
     }
 }
 
-AForm::~AForm()
+
+
+AForm::AForm(const AForm& src) :
+    gradeSign(src.gradeSign),
+    gradeExecute(src.gradeExecute)
 {
 }
- void AForm::signAForm() 
- {
-
-}
-
 void AForm::beSigned(const Bureaucrat &bureaucrat)
 {
     if (bureaucrat.getGrade() <= gradeSign)

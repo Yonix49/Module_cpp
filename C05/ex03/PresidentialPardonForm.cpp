@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:05:36 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/10/07 19:16:04 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/10/08 13:02:37 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,21 @@ PresidentialPardonForm::PresidentialPardonForm(const std::string &target)
 {
 }
 
+PresidentialPardonForm::PresidentialPardonForm() : AForm("PresidentialPardonForm", 25, 5), target("default") {}
+
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm &src) : AForm(src.getName(), src.getGradeSign(), src.getGradeExecute()) 
+{
+	*this = src;
+}
+PresidentialPardonForm::~PresidentialPardonForm() {}
+PresidentialPardonForm & PresidentialPardonForm::operator= (const PresidentialPardonForm &rhs) 
+{
+	if (this != &rhs)
+	{
+		target = rhs.target;
+	}
+	return *this;
+}
 void PresidentialPardonForm::execute(Bureaucrat const &executor) const
 {
 	if (isSigned() == false)

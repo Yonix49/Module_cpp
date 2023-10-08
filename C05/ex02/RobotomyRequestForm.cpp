@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/07 15:05:43 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/10/07 19:18:55 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/10/08 13:04:17 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,22 @@ RobotomyRequestForm::RobotomyRequestForm(const std::string &target)
 {
 
 }
+RobotomyRequestForm::RobotomyRequestForm() : AForm("RobotomyRequestForm", 72, 5), target("default") {}
 
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm &src) : AForm(src.getName(), src.getGradeSign(), src.getGradeExecute()) 
+{
+	*this = src;
+}
+RobotomyRequestForm::~RobotomyRequestForm() {}
+
+RobotomyRequestForm & RobotomyRequestForm::operator= (const RobotomyRequestForm &rhs) 
+{
+	if (this != &rhs)
+	{
+		target = rhs.target;
+	}
+	return *this;
+}
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const
 {
     if (isSigned() == false)

@@ -13,9 +13,11 @@ class Bureaucrat ;
 
 class Form {
 public:
-    Form(const std::string& name, int gradeSign, int gradeExecute);
+    Form();
     ~Form();
     Form& operator= (const Form &src);
+    Form(const Form& src);
+    Form(const std::string& name, int gradeSign, int gradeExecute);
     
     const std::string& getName() const;
     int getGradeSign() const;

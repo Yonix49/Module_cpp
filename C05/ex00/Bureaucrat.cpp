@@ -11,11 +11,8 @@
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
-// Bureaucrat::Bureaucrat()
-// {
-//     std::cout << "Bureaucrat default constructor called" << std::endl;
-// }
 
+//Constructeur
 Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
 {
     if (grade < 1)
@@ -29,9 +26,9 @@ Bureaucrat::Bureaucrat(const std::string& name, int grade) : name(name)
     else
     {
         this->grade = grade;
-        // std::cout << "Bureaucrat " << name << " with grade of " << grade << " called constructor" << std::endl;
     }
 }
+//Fonction incre
 
 void Bureaucrat::GradeIncrement()
 {
@@ -44,7 +41,7 @@ void Bureaucrat::GradeIncrement()
         throw GradeTooHighException();
     }
 }
-
+//Fonction decre
 void Bureaucrat::GradeDecrement()
 {
     if (grade < 150)
@@ -56,6 +53,8 @@ void Bureaucrat::GradeDecrement()
         throw GradeTooLowException();
     }
 }
+//Operateur surcharge =
+
 Bureaucrat &Bureaucrat::operator = (const Bureaucrat& src)
 {
 	if (this != &src)
@@ -66,19 +65,20 @@ Bureaucrat &Bureaucrat::operator = (const Bureaucrat& src)
 }
 Bureaucrat::~Bureaucrat()
 {
-    // std::cout << "Bureaucrat " << name << " called destructor" << std::endl;
 }
+//Guetteur name
 
 const std::string& Bureaucrat::getName() const
 {
     return name;
 }
-
+//Guetteur grade
 int Bureaucrat::getGrade() const
 {
     return grade;
 }
 
+//Operateur ecriture 
 std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureaucrat)
 {
     os << bureaucrat.getName() << ", bureaucrat grade " << bureaucrat.getGrade() << std::endl;
