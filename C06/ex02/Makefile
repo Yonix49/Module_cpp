@@ -1,4 +1,4 @@
-SRCS= main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+SRCS= main.cpp Base.cpp 
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 
@@ -9,7 +9,7 @@ CXXFLAGS += -MMD
 # CFLAGS += -fsanitize=address
 INCLUDE = -I. 
 
-NAME = bureaucrat
+NAME = Base
 
 all: $(NAME)
 
