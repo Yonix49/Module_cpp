@@ -13,10 +13,7 @@
 #include "Bureaucrat.hpp"
 #include "Form.hpp"
 
-// Bureaucrat::Bureaucrat()
-// {
-//     std::cout << "Bureaucrat default constructor called" << std::endl;
-// }
+
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : name(name)
 {

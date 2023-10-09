@@ -20,6 +20,23 @@ Form::~Form()
 Form::Form() : name("default form"), sign(false), gradeSign(150), gradeExecute(150) {
     
 }
+// Constructeur de copie
+Form::Form(const Form& src) :
+    name(src.getName()),
+    sign(src.isSigned()),
+    gradeSign(src.getGradeSign()),
+    gradeExecute(src.getGradeExecute())
+{
+}
+// Opérateur d'assignation
+Form& Form::operator=(const Form& src)
+{
+    if (this != &src)
+    {
+        this->sign = src.sign;
+    }
+    return *this;
+}
 
 Form::Form(const std::string& name, int gradeSign, int gradeExecute)
     : name(name), sign(false), gradeSign(gradeSign), gradeExecute(gradeExecute)
@@ -49,14 +66,6 @@ void Form::beSigned(const Bureaucrat& bureaucrat)
     }
 }
 
-// Constructeur de copie
-Form::Form(const Form& src) :
-    name(src.getName()),
-    sign(src.isSigned()),
-    gradeSign(src.getGradeSign()),
-    gradeExecute(src.getGradeExecute())
-{
-}
 
 bool Form::get_Grade_bool_sign() const
 {
@@ -85,15 +94,6 @@ bool Form::isSigned() const
     return sign;
 }
 
-// Opérateur d'assignation
-Form& Form::operator=(const Form& src)
-{
-    if (this != &src)
-    {
-        this->sign = src.sign;
-    }
-    return *this;
-}
 
 // Operateur flux sortie
 std::ostream& operator<<(std::ostream& os, const Form& form)
