@@ -18,14 +18,14 @@
 int main()
 {
     try {
-        Bureaucrat david("david", 1);
+        Bureaucrat Momo("Momo", 1);
         Intern someRandomIntern;
         AForm* rrf;
 
         rrf = someRandomIntern.makeForm("Momo request", "Bender");
 
         if (rrf != NULL) {
-            david.signForm(*rrf);
+            Momo.signForm(*rrf);
             delete rrf;
         }
         else {
@@ -35,7 +35,7 @@ int main()
         rrf = someRandomIntern.makeForm(" request", "Bender");
 
         if (rrf != NULL) {
-            david.signForm(*rrf);
+            Momo.signForm(*rrf);
             delete rrf;
         }
         else {

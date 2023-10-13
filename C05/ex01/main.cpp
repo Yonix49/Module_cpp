@@ -26,7 +26,7 @@ int main()
 	try
 	{
 		Bureaucrat Momo("Momo", 50);
-		Form Alt1("Alt1", 70, 70);
+		Form Alt1("Alt1", 50, 10);
 		Form Alt2("Alt2", 20, 20);
 		std::cout << Momo << Alt1 << Alt2;
 		Momo.signForm(Alt1);
