@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 17:10:49 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/10/12 11:43:55 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/10/12 16:21:07 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,10 +131,15 @@ void ScalarConverter::printFloat(float f)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(f) << std::endl;
-	// std::cout << "float: " << std::scientific << std::setprecision(1) << f << "f" << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << f << "f" << std::endl;
-
-	std::cout << "double: " << static_cast<double>(f) << std::endl;
+	// std::cout << "float: " << f << "f" << std::endl;
+	if (f - static_cast<int>(f) == 0)
+		std::cout << "float: " << f << ".0" << "f"<< std::endl;
+	else
+		std::cout << "float: " << f << "f" << std::endl;
+	if (f - static_cast<int>(f) == 0)
+		std::cout << "double: " << f << ".0" << std::endl;
+	else
+		std::cout << "double: " << f << std::endl;
 }
 
 void ScalarConverter::printDouble(double d)
@@ -153,10 +158,11 @@ void ScalarConverter::printDouble(double d)
 		std::cout << "int: impossible" << std::endl;
 	else
 		std::cout << "int: " << static_cast<int>(d) << std::endl;
-	std::cout << "float: " << std::fixed << std::setprecision(1) << d << "f" << std::endl;
+	std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+	// std::cout << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(d) << std::endl;
 	// std::cout << "float: " << std::scientific << std::setprecision(1) << d << "f" << std::endl;
 	if (d - static_cast<int>(d) == 0)
-		std::cout << "double: " << d << std::endl;
+		std::cout << "double: " << d << ".0" << std::endl;
 	else
 		std::cout << "double: " << d << std::endl;
 

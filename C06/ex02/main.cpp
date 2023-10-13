@@ -40,7 +40,7 @@ Base *generate(void)
 
 void identify(Base *p)
 { // Identifie un type en fonction de son pointeur de base
-	if (dynamic_cast<A *>(p))
+	if (dynamic_cast<A *>(p))//check si l'objet herite bien de la classe donne 
 	{
 		std::cout << "A" << std::endl;
 	}
