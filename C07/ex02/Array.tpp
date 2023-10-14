@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 16:32:51 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/10/13 17:26:32 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/10/14 09:36:59 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ T &Array<T>::operator[](unsigned int index)
     }
     return array[index];
 }
+
 template <typename T>
 unsigned int Array<T>::Size() const
 {
