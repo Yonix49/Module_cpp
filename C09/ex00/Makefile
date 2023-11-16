@@ -1,4 +1,4 @@
-SRCS= main.cpp parsing.cpp BitcoinExchange.cpp
+SRCS= main.cpp  BitcoinExchange.cpp
 OBJS = $(SRCS:.cpp=.o)
 DEPS = $(SRCS:.cpp=.d)
 

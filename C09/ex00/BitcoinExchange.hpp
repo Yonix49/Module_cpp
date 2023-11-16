@@ -13,14 +13,14 @@
 #ifndef BITCOINEXCHANGE_HPP
 # define BITCOINEXCHANGE_HPP
 
-# include <algorithm>
-# include <fstream>
-# include <iostream>
-# include <map>
-# include <string>
-# include <cstdlib>
-# include <vector>
-
+#include <cstring>
+#include <iostream>
+#include <string>
+#include <sstream>
+#include <cstdlib>
+#include <fstream>
+#include <map>
+#include <iomanip>
 class BitcoinExchange
 {
   public:
@@ -29,25 +29,21 @@ class BitcoinExchange
 	BitcoinExchange(BitcoinExchange const &src);
 	BitcoinExchange &operator=(BitcoinExchange const &src);
 
-	int get_data_csv(void);
-	int put_data_csv(std::string date);
-	int parse_input(char **argv);
-	int calcul_rate(std::string line);
+	int 			get_data_csv(void);
+	int 			put_data_csv(std::string date);
+	int 			parse_input(char **argv);
+	int 			parsing_date(std::string date);
+	bool			is_float(std::string value);
+	bool			is_int(std::string value);
+	int				parse(std::string line);
+	int 			parsing_value(std::string value);
 
+	int 			calcul_rate(std::string line);
+	bool 			parsing_valid_date(std::string date);
 
   private:
 	std::map<std::string, float> _exchangeRates;
 };
 
-
-int 			parsing_date(std::string date);
-
-bool			is_float(std::string value);
-
-bool			is_int(std::string value);
-
-int				parsing_value(std::string value);
-
-int				parse(std::string line);
 
 #endif
