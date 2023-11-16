@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:33:00 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/11/14 16:15:32 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:16:02 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,49 @@
 #include <iostream>
 #include <string>
 #include "BitcoinExchange.hpp"
+#include <sstream>
+
+
+bool isLeapYear(int year)
+{
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+bool isValidDate(const std::string &date)
+{
+    std::istringstream iss(date);
+    int year, month, day;
+    char sep;
+    iss >> year >> sep >> month >> sep >> day;
+
+    if (iss.fail() || iss.bad() || iss.eof() || sep != '-')
+    {
+        std::cerr << "Error: Invalid date format." << std::endl;
+        return false;
+    }
+    else if (month == 2)
+    {
+        if (isLeapYear(year))
+        {
+            if (day > 29)
+            {
+                std::cerr << "Error: Invalid day for February (leap year)." << std::endl;
+                return false;
+            }
+        }
+        else
+        {
+            if (day > 28)
+            {
+                std::cerr << "Error: Invalid day for February." << std::endl;
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
 
 int parsing_date(std::string date)
 {
@@ -33,7 +76,6 @@ int parsing_date(std::string date)
         std::cerr << "Error: date format is not correct" << std::endl;
         return (1);
     }
-    
     i = 0;
     while (date[i])
     {
@@ -49,7 +91,7 @@ int parsing_date(std::string date)
                 std::cerr << "Error: years format is not correct" << std::endl;
                 return (1);
             }
-            else if (!(atoll(check.c_str()) >= 2011 && atoll(check.c_str()) <= 2023))
+            else if (!(atoll(check.c_str()) >= 2009 && atoll(check.c_str()) <= 2023))
             {
                 std::cerr << "Error: bad input => "  << date << std::endl;
                 std::cerr << "Error: years not in range is not correct" << std::endl;
@@ -99,6 +141,10 @@ int parsing_date(std::string date)
             break;
         }
         i++;
+    }
+    if (isValidDate(date) == false)
+    {
+        return (1);
     }
     return (0);
 }
@@ -171,6 +217,11 @@ int parsing_value(std::string value)
             std::cerr << "Error: value is negative" << std::endl;
             return 1;
         }
+        else if (!(f_value > 0 && f_value < 1000))
+        {
+            std::cerr << "Error: value is not in range" << std::endl;
+            return 1;
+        }
     }
     if (is_int(value) == true)
     {
@@ -185,12 +236,18 @@ int parsing_value(std::string value)
             std::cerr << "Error: too large a number." << std::endl;
             return (1);
         }
+        else if (!(i_value > 0 && i_value < 1000))
+        {
+            std::cerr << "Error: value is not in range" << std::endl;
+            return 1; 
+        }
     }
     if (flag_float == 0 && flag_int == 0)
     {
         if (value[0] == '-')
         {
             std::cerr << "Error: not a positive number" << std::endl;
+            std::cerr << "Error: value is not a float or int" << std::endl;
             return (1);
         }
         std::cerr << "Error: value is not a float or int" << std::endl;
@@ -202,7 +259,6 @@ int parsing_value(std::string value)
 }
 int	parse(std::string line)
 {
-	// long long	result;
 	int			i;
 
 	std::string date;
@@ -227,7 +283,7 @@ int	parse(std::string line)
 	if (parsing_date(date) != 0)
         return (1);
     else if (parsing_value(value) != 0)
-            return (1);
-
-	return (0);
+        return (1);
+	
+    return (0);
 }

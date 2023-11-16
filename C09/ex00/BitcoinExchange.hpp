@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:34:50 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/11/14 16:58:16 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:11:46 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,9 @@
 # include <iostream>
 # include <map>
 # include <string>
-#   include <cstdlib>
+# include <cstdlib>
 # include <vector>
+
 class BitcoinExchange
 {
   public:
@@ -30,19 +31,16 @@ class BitcoinExchange
 
 	int get_data_csv(void);
 	int put_data_csv(std::string date);
+	int parse_input(char **argv);
+	int calcul_rate(std::string line);
+
 
   private:
-	struct		DateValuePair
-	{
-		std::string date;
-		float	exchangeRate;
-	};
-    
-	std::map<std::string, DateValuePair> _exchangeRates;
+	std::map<std::string, float> _exchangeRates;
 };
 
 
-int parsing_date(std::string date);
+int 			parsing_date(std::string date);
 
 bool			is_float(std::string value);
 

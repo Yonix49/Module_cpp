@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:34:43 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/11/14 20:02:04 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/11/16 12:11:58 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int BitcoinExchange::put_data_csv(std::string date)
     std::string date_value;
     int i = 0;
 
-    // Extraire la date
     while (date[i] && date[i] != ',')
     {
         date_value += date[i];
@@ -54,10 +53,8 @@ int BitcoinExchange::put_data_csv(std::string date)
     {
         std::cerr << "Error: Missing comma in line: " << date << std::endl;
         return 1;
-    }
-
-    DateValuePair tempPair = {date_value, value};
-    _exchangeRates[date_value] = tempPair;
+    }    
+    _exchangeRates.insert(std::make_pair(date_value, value));
     return 0;
 }
 
@@ -71,7 +68,6 @@ int BitcoinExchange::get_data_csv(void)
     }
     std::string line;
     int i = 0;
-    
     while (std::getline(infile, line))
     {
         if (i == 0)
