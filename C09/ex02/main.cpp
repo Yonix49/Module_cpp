@@ -1,41 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   RPN.hpp                                            :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/16 20:13:03 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/11/17 12:03:06 by mhajji-b         ###   ########.fr       */
+/*   Created: 2023/10/12 14:28:51 by mhajji-b          #+#    #+#             */
+/*   Updated: 2023/11/17 14:45:05 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef RPN_HPP
-#define RPN_HPP
+#include "PmergeMe.hpp"
 
-#include <cstring>
-#include <iostream>
-#include <string>
-#include <sstream>
-#include <cstdlib>
-#include <fstream>
-#include <map>
-#include <iomanip>
-#include <cmath>
-#include <stack>
-
-class RPN
+int main(int argc, char* argv[]) 
 {
-    public:
-        RPN();
-        ~RPN();
-        RPN(RPN const &);
-        RPN & operator=(RPN const &);         
-    private:
-    
-
-};
-
-
-
-#endif /* RPN_HPP */
+    if (argc < 2)
+	{
+		std::cout << "Usage: ./PmergeMe <positive integer sequence as argument> " << std::endl;
+		return 1;
+	}
+	try 
+    {
+		PmergeMe pmergeme(argc, argv);
+	}
+	catch (std::exception &e) {
+		std::cout << e.what() << std::endl;
+	}
+    return 0;
+}
