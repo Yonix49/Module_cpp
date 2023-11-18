@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:16:27 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/11/18 10:37:55 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/11/18 13:46:35 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,19 +87,14 @@ template <typename T> void PmergeMe::insertion_sort(T& container)
     }
 }
 
-// Méthode pour trier le conteneur en utilisant l'algorithme de tri fusion
 template <typename T> T PmergeMe::sort(T& container) 
 {
-    //Organise les elements dans le containers
     for(std::size_t i = 0; i + 1 < container.size(); i+=2)
     {
         if (container[i] < container[i + 1])	
             std::swap(container[i], container[i+1]);
     }
     
-    // On divise le conteneur en deux parties
-    // A = elements plus petit
-    // B = elements plus grand
     T A_cont, B_cont;
     for(std::size_t i = 0; i < container.size(); i++)
     {
