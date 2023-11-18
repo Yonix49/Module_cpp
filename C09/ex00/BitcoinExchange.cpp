@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:34:43 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/11/17 20:43:51 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/11/18 11:35:25 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,30 +32,7 @@ BitcoinExchange & BitcoinExchange::operator=(BitcoinExchange const & src)
     }
     return (*this);
 }
-int BitcoinExchange::put_data_csv(std::string date)
-{
-    float value = 0.0; 
-    std::string date_value;
-    int i = 0;
-
-    while (date[i] && date[i] != ',')
-    {
-        date_value += date[i];
-        i++;
-    }
-    if (date[i] == ',')
-    {
-        i++;
-        value = static_cast<float>(atof(date.substr(i).c_str()));
-    }
-    else
-    {
-        std::cerr << "Error: Missing comma in line: " << date << std::endl;
-        return 1;
-    }    
-    _exchangeRates.insert(std::make_pair(date_value, value));
-    return 0;
-}
+// ! Parsing CSV here //
 
 int BitcoinExchange::get_data_csv(void)
 {
@@ -90,8 +67,31 @@ int BitcoinExchange::get_data_csv(void)
     infile.close();
     return (0);
 }
-// ! Parsing CSV here //
 
+int BitcoinExchange::put_data_csv(std::string date)
+{
+    float value = 0.0; 
+    std::string date_value;
+    int i = 0;
+
+    while (date[i] && date[i] != ',')
+    {
+        date_value += date[i];
+        i++;
+    }
+    if (date[i] == ',')
+    {
+        i++;
+        value = static_cast<float>(atof(date.substr(i).c_str()));
+    }
+    else
+    {
+        std::cerr << "Error: Missing comma in line: " << date << std::endl;
+        return 1;
+    }    
+    _exchangeRates.insert(std::make_pair(date_value, value));
+    return 0;
+}
 int BitcoinExchange::parsing_csv(std::string line)
 {
     if (line.empty())
@@ -143,6 +143,9 @@ int BitcoinExchange::parsing_csv(std::string line)
     }
     return (0); 
 }
+
+
+
 int	BitcoinExchange::parse(std::string line)
 {
 	int			i;
@@ -174,6 +177,7 @@ int	BitcoinExchange::parse(std::string line)
 }
 
 
+//! Parsing input and calcul rate here //
 
 int BitcoinExchange::calcul_rate(std::string line)
 {
@@ -202,7 +206,9 @@ int BitcoinExchange::calcul_rate(std::string line)
 	
     if (it != _exchangeRates.end())
     {
-        std::cout << "Date found: " << it->first << std::endl;
+		float f_value = std::strtof(value.c_str(), NULL);
+        f_value = f_value * it->second;
+		std::cout << date << " => " << value << " = " << f_value << std::endl;  
         return true;
     }
     else
@@ -214,7 +220,7 @@ int BitcoinExchange::calcul_rate(std::string line)
             return false;
         }
         --it;
-        date = it->first;
+        // date = it->first;
 		float f_value = std::strtof(value.c_str(), NULL);
         f_value = f_value * it->second;
 		std::cout << date << " => " << value << " = " << f_value << std::endl;
@@ -222,7 +228,6 @@ int BitcoinExchange::calcul_rate(std::string line)
     }
 }	
 	
-//! Parsing input and calcul rate here //
 
 int BitcoinExchange::parse_input(char **argv)
 {
@@ -242,11 +247,10 @@ int BitcoinExchange::parse_input(char **argv)
             if (line != "date | value")
             {
                 std::cerr << "Error: first line is not correct" << std::endl;
-                
                 return (2);
             }
 		}
-	    if (parse(line) == 0)
+	    else if (parse(line) == 0)
         {
 		    calcul_rate(line);        
         }
@@ -272,6 +276,7 @@ int BitcoinExchange::parsing_date(std::string date)
     if (count_dash != 2)
     {
         std::cerr << "Error: date format is not correct" << std::endl;
+        std::cout << count_dash << date << std::endl;
         return (1);
     }
     i = 0;
@@ -387,13 +392,11 @@ bool BitcoinExchange::parsing_valid_date(std::string date)
 
         case 2: // Fevrier
             if ((year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)) {
-                // Annee bissextile, fevrier a 29 jours
                 if (day < 1 || day > 29) {
                     std::cerr << "Error: Invalid day for the given month." << std::endl;
                     return false;
                 }
             } else {
-                // Annee non bissextile, fevrier a 28 jours
                 if (day < 1 || day > 28) {
                     std::cerr << "Error: Invalid day for the given month." << std::endl;
                     return false;
@@ -408,7 +411,6 @@ bool BitcoinExchange::parsing_valid_date(std::string date)
 
 
 // ? Parsing Value here // 
-
 
 int BitcoinExchange::parsing_value(std::string value) 
 {

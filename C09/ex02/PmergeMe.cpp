@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/16 20:16:27 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/11/17 15:18:16 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/11/18 10:37:55 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 PmergeMe::PmergeMe() {}
 
 PmergeMe::~PmergeMe() {}
+
 PmergeMe::PmergeMe(const PmergeMe&) {}
 
 PmergeMe& PmergeMe::operator=(const PmergeMe&) 
@@ -70,28 +71,18 @@ template <typename T> void PmergeMe::printContainer(T& container)
 
 template <typename T> void PmergeMe::insertion_sort(T& container)
 {
-    // Parcourir chaque élément du conteneur, en commençant par le deuxième
-    for(std::size_t indiceElementCourant = 1; indiceElementCourant < container.size(); indiceElementCourant++)
+    for(std::size_t i = 1; i < container.size(); i++)
     {
-        // L'élément à l'indice courant est la clé
-        int cle = container[indiceElementCourant];
+        int cle = container[i];
 
-        // Commencer à comparer avec l'élément juste avant la clé
-        int indiceComparaison = indiceElementCourant - 1;
+        int indiceComparaison = i - 1;
 
-        // Tant que nous n'avons pas atteint le début du conteneur et
-        // que l'élément que nous comparons est supérieur à la clé
         while(indiceComparaison >= 0 && container[indiceComparaison] > cle)
         {
-            // Déplacer l'élément de comparaison d'un pas vers la droite
             container[indiceComparaison + 1] = container[indiceComparaison];
-
-            // Passer à l'élément précédent pour la prochaine comparaison
             indiceComparaison--;
         }
 
-        // À ce stade, nous avons trouvé la position correcte pour la clé,
-        // nous l'insérons donc ici
         container[indiceComparaison + 1] = cle;
     }
 }
@@ -133,7 +124,8 @@ void PmergeMe::parsing_elements(std::string av)
     if (av.size() == 0)
         throw CustomException("Error");
     size_t i = 0;
-    while (i < av.size()) {
+    while (i < av.size()) 
+    {
         if (!isdigit(av[i]))
             throw CustomException("Error");
         i++;
