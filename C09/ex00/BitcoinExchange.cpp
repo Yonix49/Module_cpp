@@ -6,7 +6,7 @@
 /*   By: mhajji-b <mhajji-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/14 15:34:43 by mhajji-b          #+#    #+#             */
-/*   Updated: 2023/11/18 11:35:25 by mhajji-b         ###   ########.fr       */
+/*   Updated: 2023/11/18 13:10:44 by mhajji-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -254,7 +254,6 @@ int BitcoinExchange::parse_input(char **argv)
         {
 		    calcul_rate(line);        
         }
-		
 		i++;
 	}    
     return (0);  
@@ -485,6 +484,8 @@ bool BitcoinExchange::is_float(std::string value)
     {
         if (value[i] == '.')
         {
+            if (i == 0 || value[i + 1] == '\0')
+                return (false);
             dot++;
             if (value[i + 1] == '\0' && !(value[i - 1] >= '0' && value[i - 1] <= '9'))
             {
@@ -494,6 +495,7 @@ bool BitcoinExchange::is_float(std::string value)
         }
         i++;
     }
+    
     if (dot == 1)
     {
         return (true);
